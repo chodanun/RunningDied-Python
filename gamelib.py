@@ -14,7 +14,6 @@ class SimpleGame(object):
 		while not self.is_terminated :
 			self.__handle_events()
 			self.update()
-			self.surface.fill(self.background_color)
 			self.render(self.surface)
 			pygame.display.update()
 			self.clock.tick(self.fps)
@@ -26,15 +25,50 @@ class SimpleGame(object):
 		for event in pygame.event.get():
 			if event.type == QUIT:
 				self.terminate()    
-			elif event.type == KEYDOWN:
-				self.on_key_down(event.key)
-			elif event.type ==KEYUP:
+			if event.type == K_UP:
 				self.on_key_up(event.key)
+			if event.type == K_DOWN:
+				self.on_key_down(event.key)
+			if event.type == K_LEFT:
+				self.on_key_left(event.key)
+			if event.type == K_RIGHT:
+				self.on_key_right(event.key)
+
+			if event.type == K_w:
+				self.on_key_up2(event.key)
+			if event.type == K_s:
+				self.on_key_down2(event.key)
+			if event.type == K_a:
+				self.on_key_left2(event.key)
+			if event.type == K_d:
+				self.on_key_right2(event.key)
+
+
 
 	def on_key_up(self, key):
 		pass
  
 	def on_key_down(self, key):
+		pass
+
+	def on_key_left(self, key):
+		pass
+
+	def on_key_right(self, key):
+		pass
+
+	def on_key_up2(self, key):
+		pass
+ 
+	def on_key_down2(self, key):
+		pass
+
+
+	def on_key_left2(self, key):
+		pass
+
+
+	def on_key_right2(self, key):
 		pass
 
 	def init(self):
@@ -46,6 +80,7 @@ class SimpleGame(object):
 		self.surface = pygame.display.set_mode(self.window_size)
 		pygame.display.set_caption(self.title)
 		self.font = pygame.font.SysFont("monospace", 20)
+
 
 	def update(self):
 		pass
