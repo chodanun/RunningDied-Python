@@ -6,6 +6,7 @@ class player(object):
 		self.x = posX
 		self.y = posY
 		self.vy = 0
+		self.vx = 0
 		self.player = pygame.image.load(loc)
 
 	def update(self):
@@ -17,16 +18,19 @@ class player(object):
 			self.vy = 0
 
 	def moveRight(self):
-		self.x += 5
+		self.x += 10
 
 	def moveLeft(self):
-		self.x -= 5
+		self.x -= 10
 
 	def Jump(self):
 		self.vy = 7
 
 	def getY(self):
 		return self.y
+
+	def getX(self):
+		return self.x
 
 	def render(self,surface):
 		surface.blit(self.player,(self.x,self.y))

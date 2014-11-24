@@ -28,19 +28,23 @@ class SimpleGame(object):
 			elif event.type == KEYDOWN :
 				if event.key == K_UP:
 					if ( self.player_1.getY() >= 300):
-						self.player_1.Jump()	
+						self.player_1.Jump()
 				if event.key == K_LEFT:
-					self.player_1.moveLeft()
+					if (self.player_1.getX()>= 350 ):
+						self.player_1.moveLeft()
 				if event.key == K_RIGHT:
-					self.player_1.moveRight()
-					
+					if (self.player_1.getX() <= 640-90 ):
+						self.player_1.moveRight()
+
 				if event.key == K_w:
 					if ( self.player_2.getY() >= 300):
 						self.player_2.Jump()
 				if event.key == K_a:
-					self.player_2.moveLeft()
+					if ( self.player_2.getX() >= -10):
+						self.player_2.moveLeft()
 				if event.key == K_d:
-					self.player_2.moveRight()
+					if ( self.player_2.getX() <= 200):
+						self.player_2.moveRight()
 
 	def init(self):
 		self.__game_init()

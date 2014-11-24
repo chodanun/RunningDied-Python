@@ -32,14 +32,12 @@ class SquashGame(SimpleGame):
 		self.surface.blit(self.bg,(0,0))
 		self.player_1.update()
 		self.player_2.update()
-
 		# ... update the position
  
 	def render(self, surface):
 		self.player_1.render(surface)
 		self.player_2.render(surface)
 		
- 
 	# ...
  
 def main():
