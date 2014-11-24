@@ -1,0 +1,35 @@
+import pygame
+from pygame.locals import *
+from gamelib import SimpleGame
+
+class players(object):
+	def __init__(self,type,pos):
+		player = pygame.image.load(type)
+		self.surface.blit(player,pos)
+
+	def update(self):
+		__handle_events()
+
+	def __handle_events(self):
+		for event in pygame.event.get():
+			if event.type == pygame.KEYDOWN:
+				key = pygame.key.get_pressed()
+				if key[pygame.K_UP]:
+					pass
+				if key[pygame.K_DOWN]:
+					pass
+				if key[pygame.K_LEFT]:
+					pass
+				if key[pygame.K_RIGHT]:
+					pass
+
+				if key[pygame.K_w]:
+					pass
+				if key[pygame.K_s]:
+					pass
+				if key[pygame.K_a]:
+					pass
+				if key[pygame.K_d]:
+					pass
+		
+		

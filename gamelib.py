@@ -23,53 +23,24 @@ class SimpleGame(object):
 
 	def __handle_events(self):
 		for event in pygame.event.get():
-			if event.type == QUIT:
+			if event.type == QUIT :
 				self.terminate()    
-			if event.type == K_UP:
-				self.on_key_up(event.key)
-			if event.type == K_DOWN:
-				self.on_key_down(event.key)
-			if event.type == K_LEFT:
-				self.on_key_left(event.key)
-			if event.type == K_RIGHT:
-				self.on_key_right(event.key)
-
-			if event.type == K_w:
-				self.on_key_up2(event.key)
-			if event.type == K_s:
-				self.on_key_down2(event.key)
-			if event.type == K_a:
-				self.on_key_left2(event.key)
-			if event.type == K_d:
-				self.on_key_right2(event.key)
-
-
-
-	def on_key_up(self, key):
-		pass
- 
-	def on_key_down(self, key):
-		pass
-
-	def on_key_left(self, key):
-		pass
-
-	def on_key_right(self, key):
-		pass
-
-	def on_key_up2(self, key):
-		pass
- 
-	def on_key_down2(self, key):
-		pass
-
-
-	def on_key_left2(self, key):
-		pass
-
-
-	def on_key_right2(self, key):
-		pass
+			elif event.type == KEYDOWN :
+				if event.key == K_UP:
+					if ( self.player_1.getY() >= 300):
+						self.player_1.Jump()	
+				if event.key == K_LEFT:
+					self.player_1.moveLeft()
+				if event.key == K_RIGHT:
+					self.player_1.moveRight()
+					
+				if event.key == K_w:
+					if ( self.player_2.getY() >= 300):
+						self.player_2.Jump()
+				if event.key == K_a:
+					self.player_2.moveLeft()
+				if event.key == K_d:
+					self.player_2.moveRight()
 
 	def init(self):
 		self.__game_init()
@@ -83,7 +54,7 @@ class SimpleGame(object):
 
 
 	def update(self):
-		pass
+		print "gamelib"
 
 	def render(self,surface):
 		pass
