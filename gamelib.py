@@ -58,7 +58,7 @@ class SimpleGame(object):
 
 
 	def update(self):
-		print "gamelib"
+		pass
 
 	def render(self,surface):
 		pass
