@@ -18,13 +18,13 @@ class player(object):
 			self.vy = 0
 
 	def moveRight(self):
-		self.x += 1.5
+		self.x += 1.1
 
 	def moveLeft(self):
-		self.x -= 1.5
+		self.x -= 1.1
 
 	def Jump(self):
-		self.vy = 7
+		self.vy = 2
 
 	def getY(self):
 		return self.y

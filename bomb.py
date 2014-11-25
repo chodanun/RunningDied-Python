@@ -7,13 +7,14 @@ class bomb(object):
 		self.x = 445
 		self.y = 480/8
 		self.vx = 0
-		self.vy = 2
+		self.vy = 3
 		self.bomb = pygame.image.load("grenade.png")
 
 	def update(self):
 		self.y += self.vy
 		self.x += self.vx
 		self.handle()
+		self.net_collide()
 		if (self.y >= 480):
 			self.y = 0 
 
@@ -28,6 +29,14 @@ class bomb(object):
 		if (self.x >= 640-60):
 			self.vx *= -1
 
+	def net_collide(self):
+		if ( self.y >= 480-200 ):
+			if (290-40+20 <= self.x <= 350+40-20):
+				if ( self.vx >= 0):
+					self.vx = 2
+				else:
+					self.vx = -2
+
 	def getX(self):
 		return self.x
 
@@ -41,5 +50,8 @@ class bomb(object):
 		self.vx = 2
 
 	def inverseVx(self):
-		self.vx *= -1 
+		self.vx *= -1.345
+
+
+
 

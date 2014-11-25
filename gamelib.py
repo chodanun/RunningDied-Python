@@ -18,13 +18,13 @@ class SimpleGame(object):
 			self.render(self.surface)
 			pygame.display.update()
 			self.clock.tick(self.fps)
+
 			
 	def terminate(self):
 		self.is_terminated = True
 
 	def __handle_events(self):
 		for event in pygame.event.get():
-			print "Gello"
 			if event.type == QUIT :
 				self.terminate()    
 
