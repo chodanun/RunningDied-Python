@@ -13,6 +13,7 @@ class SquashGame(SimpleGame):
 		self.first = True
 		self.score = 0
 		self.score2 = 0 
+		self.time = 0 
  
 	def init (self):
 		super(SquashGame, self).init()
@@ -41,15 +42,18 @@ class SquashGame(SimpleGame):
 		self.check_Collision()
 		self.check_score()
 		self.render_score()
+		self.time+=1;
 		if (self.score  >= 150 or self.score2 >= 150 ):
 			self.terminate()
 
 	def check_score(self):
-		if ( self.bomb.getY() >= 400):
+		if ( self.bomb.getY() >= 340):
 			if (self.bomb.getX()>=290):
 				self.score += 1
+				self.bomb.again()
 			else :
 				self.score2 += 1
+				self.bomb.again()
 			
 
 	def render_score(self):
@@ -65,14 +69,17 @@ class SquashGame(SimpleGame):
 		surface.blit(self.score_image, (10,10))
 		surface.blit(self.score_image2, (500,10))
 
+
 	def check_Collision(self):
-		if ( self.bomb.getX() > 290):
-			self.check_collision_player1()
-		else :
-			self.check_collision_player2 ()
+		if ( self.time >= 10):
+			self.time = 0 
+			if ( self.bomb.getX() > 290):
+				self.check_collision_player1()
+			else :
+				self.check_collision_player2 ()
 
 	def check_collision_player1(self):
-		if ( abs(self.bomb.getY()+60 - self.player_1.getY()) <= 5):
+		if ( abs(self.bomb.getY()+60 - self.player_1.getY()) <= 15 or self.bomb.getY()>=240 ):
 			if ( abs(self.player_1.getX()+50 - (self.bomb.getX()+30)) <= -5):
 				self.bomb.inverseVy()
 			elif ( 0 < self.player_1.getX()+50 - (self.bomb.getX()+30) <= 50 ):
@@ -81,7 +88,7 @@ class SquashGame(SimpleGame):
 					self.first = False 
 				self.bomb.inverseVy()
 				self.bomb.inverseVx()
-			elif ( 0 < abs(self.player_1.getX()+50 - (self.bomb.getX()+30)) <= 50 ):
+			elif ( 0 < abs(self.player_1.getX()+50 - (self.bomb.getX()+30)) <= 60 ):
 				if (self.first == True):
 					self.bomb.detVx()
 					self.first = False 
@@ -89,13 +96,13 @@ class SquashGame(SimpleGame):
 				self.bomb.inverseVx()
 
 	def check_collision_player2 (self):
-		if ( abs(self.bomb.getY()+60 - self.player_2.getY()) <= 5):
+		if ( abs(self.bomb.getY()+60 - self.player_2.getY()) <= 15 or self.bomb.getY()>=240):
 			if ( abs(self.player_2.getX()+50 - (self.bomb.getX()+30)) <= -5):
 				self.bomb.inverseVy()
 			elif ( 0 < self.player_2.getX()+50 - (self.bomb.getX()+30) <= 50 ):
 				self.bomb.inverseVy()
 				self.bomb.inverseVx()
-			elif ( 0 < abs(self.player_2.getX()+50 - (self.bomb.getX()+30)) <= 50 ):
+			elif ( 0 < abs(self.player_2.getX()+50 - (self.bomb.getX()+30)) <= 60 ):
 				self.bomb.inverseVy()
 				self.bomb.inverseVx()
 	
